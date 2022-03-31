@@ -31,8 +31,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int _pageIndex = 1;
-
   var pageController = PageController(initialPage: 1);
 
   @override
@@ -49,7 +47,7 @@ class _MyAppState extends State<MyApp> {
           controller: pageController,
           children: [
             HomePage(),
-            const NewRunPage(),
+            NewRunPage(),
             const SettingsPage(),
           ],
         ),

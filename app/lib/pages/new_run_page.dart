@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 
 class NewRunPage extends StatelessWidget {
-  const NewRunPage({Key? key}) : super(key: key);
+  NewRunPage({Key? key}) : super(key: key);
+
+  var stopWatchTimer = StopWatchTimer(
+    mode: StopWatchMode.countUp,
+    onChange: (value) => print('onChange $value'),
+    onChangeRawSecond: (value) => print('onChangeRawSecond $value'),
+    onChangeRawMinute: (value) => print('onChangeRawMinute $value'),
+  );
 
   @override
   Widget build(BuildContext context) {
+    stopWatchTimer.secondTime.listen((value) => print('secondTime $value'));
+
     var theme = Theme.of(context);
     return Center(
       child: Column(
