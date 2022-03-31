@@ -11,12 +11,12 @@ class RunListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var formatedTime = Duration(
+    var formattedTime = Duration(
             hours: run.duration ~/ 3600,
             minutes: run.duration % 3600 ~/ 60,
             seconds: run.duration % 3600 % 60)
         .toString();
-    formatedTime = formatedTime.substring(0, formatedTime.indexOf("."));
+    formattedTime = formattedTime.substring(0, formattedTime.indexOf("."));
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
@@ -44,7 +44,7 @@ class RunListTile extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     child: Text(
-                      formatedTime,
+                      formattedTime,
                       textAlign: TextAlign.start,
                       style: theme.textTheme.bodyText2,
                     ),

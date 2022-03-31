@@ -5,6 +5,7 @@ import 'package:gpstracking/pages/settings_page.dart';
 import 'package:gpstracking/provider/run_provider.dart';
 import 'package:gpstracking/provider/theme_provider.dart';
 import 'package:gpstracking/domain/theme.dart';
+import 'package:gpstracking/provider/weather_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -16,6 +17,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (_) => RunProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => WeatherProvider(),
         ),
       ],
       child: MyApp(),
