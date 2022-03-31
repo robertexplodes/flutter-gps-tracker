@@ -17,6 +17,7 @@ class Themes {
     bottomAppBarColor: const Color(0xff14213D),
     backgroundColor: const Color(0xff14213D),
     scaffoldBackgroundColor: const Color(0xff191528),
+    cardColor: const Color(0xffe79514),
     textTheme: const TextTheme(
       bodyText1: TextStyle(
         color: Color(0xffE5E5E5),
@@ -24,9 +25,13 @@ class Themes {
       bodyText2: TextStyle(
         color: Color(0xffE5E5E5),
       ),
-
+      headline4: TextStyle(
+        color: Color(0xffE5E5E5),
+      ),
+      headline6: TextStyle(
+        color: Color(0xffE5E5E5),
+      ),
     ),
-
   );
 
   ThemeData get lightTheme => ThemeData(

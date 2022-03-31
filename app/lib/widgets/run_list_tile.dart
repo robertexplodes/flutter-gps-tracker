@@ -25,19 +25,39 @@ class RunListTile extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Card(
-          color: theme.bottomAppBarColor,
+          color: theme.cardColor,
           child: Container(
-            color: theme.bottomAppBarColor,
+            color: theme.cardColor,
             padding: EdgeInsets.symmetric(vertical: 10),
-            child: Column(
-              children: [
-                Text(
-                  '${run.distance.toStringAsFixed(2)} km',
-                  style: theme.textTheme.bodyText2,
-                ),
-                Text(formatedTime),
-                Text(DateFormat("dd.MM.yyyy").format(run.start)),
-              ],
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 5),
+              child: Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    child: Text(
+                      '${run.distance.toStringAsFixed(2)} km',
+                      style: theme.textTheme.headline6,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    child: Text(
+                      formatedTime,
+                      textAlign: TextAlign.start,
+                      style: theme.textTheme.bodyText2,
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    child: Text(
+                      DateFormat("dd.MM.yyyy").format(run.start),
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
