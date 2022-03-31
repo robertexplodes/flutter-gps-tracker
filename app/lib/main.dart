@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:gpstracking/widgets/theme.dart';
+import 'package:gpstracking/pages/home_page.dart';
+import 'package:gpstracking/pages/settings_page.dart';
+import 'package:gpstracking/provider/run_provider.dart';
+import 'package:gpstracking/provider/theme_provider.dart';
+import 'package:gpstracking/domain/theme.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ThemeProvider(Themes().darkTheme),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => RunProvider(),
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -16,16 +33,17 @@ class _MyAppState extends State<MyApp> {
   int _pageIndex = 1;
 
   var pages = [
-    Center(child: Text('Page home')),
+    HomePage(),
     Center(child: Text('Page add')),
-    Center(child: Text('Page settings')),
+    SettingsPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: Themes().darkTheme,
+      theme: themeProvider.themeData,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('GPS Tracking'),
@@ -33,7 +51,7 @@ class _MyAppState extends State<MyApp> {
         body: pages[_pageIndex],
         floatingActionButton: CircleAvatar(
           radius: 25,
-          backgroundColor: const Color(0xff14213D),
+          backgroundColor: themeProvider.themeData.bottomAppBarColor,
           child: IconButton(
             icon: const Icon(
               Icons.add,
@@ -55,7 +73,10 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               IconButton(
-                icon: Icon(Icons.home,color: Colors.white,),
+                icon: Icon(
+                  Icons.home,
+                  color: Colors.white,
+                ),
                 onPressed: () {
                   setState(() {
                     _pageIndex = 0;
