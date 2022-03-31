@@ -17,37 +17,42 @@ class _HomePageState extends State<HomePage> {
   Map<String, dynamic> _currentWeather = {};
 
   @override
-  void initState() {
-    super.initState();
-    weatherService.loadWeather().then((value) {
-      setState(() {
-        _currentWeather = value;
-      });
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     var runs = Provider.of<RunProvider>(context).runs;
-    var weatherMain = _currentWeather["main"] == null
-        ? ""
-        : _currentWeather["main"] as String;
-    var weatherIcon = _currentWeather["icon"] == null
-        ? "50d"
-        : _currentWeather["icon"] as String;
+    var loadWeather = weatherService.loadWeather();
     return CustomScrollView(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       slivers: [
         SliverAppBar(
           expandedHeight: 200,
-          flexibleSpace: FlexibleSpaceBar(
-            // title: Text('Test', textScaleFactor: 1,),
-            background: Image.network(
-                'http://openweathermap.org/img/wn/$weatherIcon@2x.png'),
+          flexibleSpace: FutureBuilder(
+            future: loadWeather,
+            builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
+              if(snapshot.connectionState == ConnectionState.waiting) {
+                return const SizedBox();
+              }
+              return FlexibleSpaceBar(
+                // title: Text('Test', textScaleFactor: 1,),
+                background: Image.network(
+                    'http://openweathermap.org/img/wn/${snapshot.data!["icon"]}@2x.png'),
+              );
+            },
           ),
-          title: Text(
-            weatherMain,
-            style: Theme.of(context).textTheme.headline4,
+          title: FutureBuilder(
+            future: loadWeather,
+            builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
+              if(snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(color: Colors.white,),
+                );
+              }
+              if(snapshot.hasError) {
+                return const Center(
+                  child: Text('Could not load weather!')
+                );
+              }
+              return Text(snapshot.data!["main"] as String);
+            },
           ),
           pinned: false,
           floating: true,
@@ -55,11 +60,10 @@ class _HomePageState extends State<HomePage> {
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (context, index) {
-              if(index >= runs.length) return SizedBox(height: 60);
+              if (index >= runs.length) return const SizedBox(height: 60);
               return RunListTile(run: runs[index]);
             },
             childCount: runs.length + 1,
-
           ),
         ),
       ],
