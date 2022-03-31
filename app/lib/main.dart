@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gpstracking/pages/home_page.dart';
+import 'package:gpstracking/pages/new_run_page.dart';
 import 'package:gpstracking/pages/settings_page.dart';
 import 'package:gpstracking/provider/run_provider.dart';
 import 'package:gpstracking/provider/theme_provider.dart';
@@ -32,11 +33,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _pageIndex = 1;
 
-  var pages = [
-    HomePage(),
-    Center(child: Text('Page add')),
-    SettingsPage(),
-  ];
+  var pageController = PageController(initialPage: 1);
 
   @override
   Widget build(BuildContext context) {
@@ -48,19 +45,24 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('GPS Tracking'),
         ),
-        body: pages[_pageIndex],
+        body: PageView(
+          controller: pageController,
+          children: [
+            HomePage(),
+            const NewRunPage(),
+            const SettingsPage(),
+          ],
+        ),
         floatingActionButton: CircleAvatar(
           radius: 25,
           backgroundColor: themeProvider.themeData.bottomAppBarColor,
           child: IconButton(
             icon: const Icon(
-              Icons.add,
+              Icons.directions_run,
               color: Colors.white,
             ),
             onPressed: () {
-              setState(() {
-                _pageIndex = 0;
-              });
+              pageController.jumpToPage(1);
             },
           ),
         ),
@@ -73,22 +75,18 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.home,
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  setState(() {
-                    _pageIndex = 0;
-                  });
+                  pageController.jumpToPage(0);
                 },
               ),
               IconButton(
                 icon: Icon(Icons.settings, color: Colors.white),
                 onPressed: () {
-                  setState(() {
-                    _pageIndex = 2;
-                  });
+                  pageController.jumpToPage(2);
                 },
               ),
             ],
