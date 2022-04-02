@@ -3,6 +3,7 @@ import 'package:gpstracking/pages/home_page.dart';
 import 'package:gpstracking/pages/new_run_page.dart';
 import 'package:gpstracking/pages/settings_page.dart';
 import 'package:gpstracking/provider/run_provider.dart';
+import 'package:gpstracking/provider/stopwatch_provider.dart';
 import 'package:gpstracking/provider/theme_provider.dart';
 import 'package:gpstracking/domain/theme.dart';
 import 'package:gpstracking/provider/weather_provider.dart';
@@ -20,6 +21,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (_) => WeatherProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => StopwatchProvider(Stopwatch()),
         ),
       ],
       child: MyApp(),

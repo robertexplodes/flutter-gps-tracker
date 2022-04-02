@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:gpstracking/provider/stopwatch_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
 class NewRunPage extends StatefulWidget {
@@ -20,15 +22,13 @@ class _NewRunPageState extends State<NewRunPage> {
 
   format(Duration d) => d.toString().split('.').first.padLeft(2, "0");
 
-  bool running = false;
-
   Timer? timer;
 
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var time = stopwatch.elapsed;
-    var formattedTime = format(time);
+    var provider = Provider.of<StopwatchProvider>(context);
+    var formattedTime = format(provider.elapsedTime);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -41,22 +41,16 @@ class _NewRunPageState extends State<NewRunPage> {
           ),
           InkWell(
             onTap: () {
-              setState(() {
-                if (!running) {
-                  stopwatch.start();
-                  timer = Timer.periodic(Duration(seconds: 1), (timer) {
-                    setState(() {
+              if (!provider.isRunning) {
+                provider.start();
+                timer = Timer.periodic(Duration(seconds: 1), (timer) { setState(() {
 
-                    });
-                  });
-                } else {
-                  stopwatch.stop();
-                  timer!.cancel();
-                }
-                setState(() {
-                  running = !running;
-                });
-              });
+                }); });
+              } else {
+                provider.stop();
+                timer!.cancel();
+              }
+              provider.isRunning = !provider.isRunning;
             },
             child: Container(
               width: 150,
@@ -67,7 +61,7 @@ class _NewRunPageState extends State<NewRunPage> {
                   ),
                   color: theme.cardColor,
                   borderRadius: const BorderRadius.all(Radius.circular(20))),
-              child: Icon(running ? Icons.pause : Icons.play_arrow,
+              child: Icon(provider.isRunning ? Icons.pause : Icons.play_arrow,
                   color: theme.textTheme.bodyText2?.color, size: 40),
             ),
           ),
