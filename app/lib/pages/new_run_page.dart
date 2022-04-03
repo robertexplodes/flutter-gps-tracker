@@ -1,12 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:gpstracking/provider/stopwatch_provider.dart';
 import 'package:provider/provider.dart';
 
 class NewRunPage extends StatelessWidget {
   const NewRunPage({Key? key}) : super(key: key);
-
 
   format(Duration d) => d.toString().split('.').first.padLeft(2, "0");
 
@@ -19,11 +16,9 @@ class NewRunPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Container(
-            child: Text(
-              formattedTime,
-              style: theme.textTheme.headline1,
-            ),
+          Text(
+            formattedTime,
+            style: theme.textTheme.headline1,
           ),
           InkWell(
             onTap: () {
@@ -33,19 +28,60 @@ class NewRunPage extends StatelessWidget {
                 provider.stop();
               }
             },
-            child: Container(
-              width: 150,
-              height: 60,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                    color: theme.cardColor,
-                  ),
-                  color: theme.cardColor,
-                  borderRadius: const BorderRadius.all(Radius.circular(20))),
-              child: Icon(provider.isRunning ? Icons.pause : Icons.play_arrow,
-                  color: theme.textTheme.bodyText2?.color, size: 40),
+            onLongPress: () {
+              if (!provider.isRunning) return;
+              provider.stop();
+              showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                        backgroundColor: theme.primaryColor,
+                        title: Text(
+                          'Stop',
+                          style: theme.textTheme.headline4,
+                        ),
+                        content: Text(
+                          'Are you sure you want to end this run?',
+                          style: theme.textTheme.bodyText2,
+                        ),
+                        actions: [
+                          TextButton(
+                            child: Text(
+                              'Cancel',
+                              style: theme.textTheme.bodyText2,
+                            ),
+                            onPressed: () => Navigator.of(context).pop(),
+                          ),
+                          TextButton(
+                            child: Text(
+                              'Stop run',
+                              style: theme.textTheme.bodyText2,
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      ));
+            },
+            child: CircleAvatar(
+              radius: 40,
+              child: Icon(
+                provider.isRunning ? Icons.stop : Icons.play_arrow,
+                color: provider.isRunning
+                    ? Colors.red
+                    : theme.textTheme.bodyText2?.color,
+                size: 30,
+              ),
             ),
           ),
+          // Container(
+          //   child: provider.started
+          //       ? CircleAvatar(
+          //           child: const Icon(Icons.stop, color: Colors.red),
+          //
+          //         )
+          //       : null,
+          // ),
         ],
       ),
     );

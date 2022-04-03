@@ -26,7 +26,7 @@ void main() {
           create: (_) => StopwatchProvider(Stopwatch()),
         ),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
           controller: pageController,
           children: [
             HomePage(),
-            NewRunPage(),
+            const NewRunPage(),
             const SettingsPage(),
           ],
         ),
@@ -90,7 +90,7 @@ class _MyAppState extends State<MyApp> {
                 },
               ),
               IconButton(
-                icon: Icon(Icons.settings, color: Colors.white),
+                icon: const Icon(Icons.settings, color: Colors.white),
                 onPressed: () {
                   pageController.jumpToPage(2);
                 },

@@ -20,7 +20,7 @@ class RunListTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: ((context) => RunPage())));
+            .push(MaterialPageRoute(builder: ((context) => RunPage(run: run))));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),

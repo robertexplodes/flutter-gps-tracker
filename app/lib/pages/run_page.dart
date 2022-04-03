@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_tappable_polyline/flutter_map_tappable_polyline.dart';
+import 'package:gpstracking/domain/run.dart';
+import 'package:intl/intl.dart';
 import 'package:latlong2/latlong.dart';
 
 class RunPage extends StatefulWidget {
-  RunPage({Key? key}) : super(key: key);
+  final Run run;
+
+  const RunPage({Key? key, required this.run}) : super(key: key);
 
   @override
   State<RunPage> createState() => _RunPageState();
@@ -23,6 +27,13 @@ class _RunPageState extends State<RunPage> {
 
   @override
   Widget build(BuildContext context) {
+    var formattedTime = Duration(
+            hours: widget.run.duration ~/ 3600,
+            minutes: widget.run.duration % 3600 ~/ 60,
+            seconds: widget.run.duration % 3600 % 60)
+        .toString();
+    formattedTime = formattedTime.substring(0, formattedTime.indexOf("."));
+    var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Run'),
@@ -107,7 +118,31 @@ class _RunPageState extends State<RunPage> {
             ),
             Container(
               height: 200,
-              child: Text('statistics here'),
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Text(
+                      DateFormat("dd.MM.yyyy HH:mm").format(widget.run.start),
+                      style: theme.textTheme.headline6,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Text(
+                      "Duration: $formattedTime",
+                      style: theme.textTheme.headline6,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Text(
+                      "Distance: ${widget.run.distance.toStringAsFixed(2)} km",
+                      style: theme.textTheme.headline6,
+                    ),
+                  ),
+                ],
+              ),
             )
           ],
         ),
