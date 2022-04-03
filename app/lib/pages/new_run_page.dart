@@ -3,26 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:gpstracking/provider/stopwatch_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
 
-class NewRunPage extends StatefulWidget {
-  NewRunPage({Key? key}) : super(key: key);
+class NewRunPage extends StatelessWidget {
+  const NewRunPage({Key? key}) : super(key: key);
 
-  @override
-  State<NewRunPage> createState() => _NewRunPageState();
-}
-
-class _NewRunPageState extends State<NewRunPage> {
-  Stopwatch stopwatch = Stopwatch();
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   format(Duration d) => d.toString().split('.').first.padLeft(2, "0");
-
-  Timer? timer;
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +29,9 @@ class _NewRunPageState extends State<NewRunPage> {
             onTap: () {
               if (!provider.isRunning) {
                 provider.start();
-                timer = Timer.periodic(Duration(seconds: 1), (timer) { setState(() {
-
-                }); });
               } else {
                 provider.stop();
-                timer!.cancel();
               }
-              provider.isRunning = !provider.isRunning;
             },
             child: Container(
               width: 150,
