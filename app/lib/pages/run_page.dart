@@ -85,7 +85,6 @@ class _RunPageState extends State<RunPage> {
                             points: locations,
                             color: Colors.blueGrey,
                             strokeWidth: 5.0,
-                            // plot size
                             isDotted: false, // if true id display dotted,
                           ),
                         ],

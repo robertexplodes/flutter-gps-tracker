@@ -5,31 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ee83a52-c99c-4b4c-8932-64272340d8ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/server/ServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/server/controller/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/server/domain/Coordinate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/server/domain/Run.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/server/persistence/CoordinateRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/server/persistence/RunRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/server/ServerApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/lib/domain/run.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/domain/run.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/lib/pages/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/pages/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/lib/pages/run_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/pages/run_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/lib/provider/run_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/provider/run_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

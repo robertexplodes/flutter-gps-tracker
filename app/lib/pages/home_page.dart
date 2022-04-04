@@ -16,7 +16,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Map<String, dynamic> _currentWeather = {};
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -79,5 +80,11 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<RunProvider>(context, listen: false).loadRuns();
   }
 }
