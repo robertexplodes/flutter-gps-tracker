@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gpstracking/domain/run.dart';
 import 'package:http/http.dart' as http;
+import 'package:latlong2/latlong.dart';
 
 class RunProvider with ChangeNotifier {
   final String _baseUrl = "http://10.0.2.2:8080";
@@ -30,5 +31,11 @@ class RunProvider with ChangeNotifier {
     return [];
   }
 
+  Future<List<LatLng>> loadCoordinates(int id) async {
+    var response = await http.get(Uri.parse('$_baseUrl/runs/$id'));
+    var data = jsonDecode(response.body) as List<dynamic>;
+
+    return data.map((e) => LatLng(e["latitude"], e["longitude"])).toList();
+  }
 }
 
