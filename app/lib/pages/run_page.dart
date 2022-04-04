@@ -42,7 +42,7 @@ class _RunPageState extends State<RunPage> {
                     future: Provider.of<RunProvider>(context, listen: false).loadCoordinates(widget.run.id),
                     builder: (BuildContext context, AsyncSnapshot<List<LatLng>> snapshot) {
                       if(snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(
+                        return const Center(
                           child: CircularProgressIndicator(),
                         );
                       }
@@ -53,7 +53,6 @@ class _RunPageState extends State<RunPage> {
                         return Text("no route");
                       }
                       var center = snapshot.data![0];
-                      print(snapshot.data!);
                       return FlutterMap(
                         options: MapOptions(
                           zoom: 14.0,
