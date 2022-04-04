@@ -16,16 +16,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   Map<String, dynamic> _currentWeather = {};
 
   @override
   Widget build(BuildContext context) {
     var runs = Provider.of<RunProvider>(context).runs;
-    var loadWeather = Provider.of<WeatherProvider>(context).loadWeatherData();
+    var loadWeather =
+        Provider.of<WeatherProvider>(context, listen: false).loadWeatherData();
     return RefreshIndicator(
       displacement: 5,
-      onRefresh: () => Provider.of<WeatherProvider>(context,listen: false).loadWeatherData(refresh: true),
+      onRefresh: () => Provider.of<WeatherProvider>(context, listen: false)
+          .loadWeatherData(refresh: true),
       child: CustomScrollView(
         physics: const ClampingScrollPhysics(),
         slivers: [
@@ -33,29 +34,32 @@ class _HomePageState extends State<HomePage> {
             expandedHeight: 100,
             flexibleSpace: FutureBuilder(
               future: loadWeather,
-              builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
-                if(snapshot.connectionState == ConnectionState.waiting) {
+              builder: (BuildContext context,
+                  AsyncSnapshot<Map<String, dynamic>> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
                   return const SizedBox();
                 }
                 return FlexibleSpaceBar(
                   // title: Text('Test', textScaleFactor: 1,),
                   background: CachedNetworkImage(
-                      imageUrl: 'http://openweathermap.org/img/wn/${snapshot.data!["icon"]}@2x.png'),
+                      imageUrl:
+                          'http://openweathermap.org/img/wn/${snapshot.data!["icon"]}@2x.png'),
                 );
               },
             ),
             title: FutureBuilder(
               future: loadWeather,
-              builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
-                if(snapshot.connectionState == ConnectionState.waiting) {
+              builder: (BuildContext context,
+                  AsyncSnapshot<Map<String, dynamic>> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(
-                    child: CircularProgressIndicator(color: Colors.white,),
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
                   );
                 }
-                if(snapshot.hasError) {
-                  return const Center(
-                    child: Text('Could not load weather!')
-                  );
+                if (snapshot.hasError) {
+                  return const Center(child: Text('Could not load weather!'));
                 }
                 return Text(snapshot.data!["main"] as String);
               },
