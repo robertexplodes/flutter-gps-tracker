@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gpstracking/pages/home_page.dart';
 import 'package:gpstracking/pages/new_run_page.dart';
 import 'package:gpstracking/pages/settings_page.dart';
+import 'package:gpstracking/provider/gps_provider.dart';
 import 'package:gpstracking/provider/run_provider.dart';
 import 'package:gpstracking/provider/stopwatch_provider.dart';
 import 'package:gpstracking/provider/theme_provider.dart';
@@ -24,6 +25,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (_) => StopwatchProvider(Stopwatch()),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => GPSProvider(),
         ),
       ],
       child: const MyApp(),

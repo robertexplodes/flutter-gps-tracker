@@ -23,7 +23,7 @@ public class Controller {
 
     @GetMapping("/runs")
     public List<Run> getRuns() {
-        return runRepository.findAll();
+        return runRepository.findAllByFinishedTrue();
     }
 
     @PostMapping("/runs")
@@ -32,15 +32,37 @@ public class Controller {
     }
 
     @PostMapping("/runs/{id}")
+    public void finishRun(@PathVariable(name = "id") Long id, @RequestBody Run newRun) {
+        var run = runRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Run not found."));
+        if(run.isFinished()) {
+            throw new IllegalArgumentException("Run already finished.");
+        }
+        run.setDuration(newRun.getDuration());
+        run.setDistance(calculateDistance(run));
+        runRepository.save(run);
+    }
+
+    private double calculateDistance(Run run) {
+        double distance = 0;
+        var coordinates = run.getCoordinates();
+        for (int i = 1; i < coordinates.size(); i++) {
+            var coordinate1 = coordinates.get(i - 1);
+            var coordinate2 = coordinates.get(i);
+            distance += coordinate1.getDistance(coordinate2);
+        }
+        return distance;
+    }
+
+    @PostMapping("/runs/{id}/coordinates")
     public Long postCoordinate(@PathVariable(name = "id") Long id, @RequestBody Coordinate coordinate) {
-        var run = runRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Run not found."));
+        var run = runRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Run not found."));
         coordinate.setRun(run);
         return coordinateRepository.save(coordinate).getId();
     }
 
-    @GetMapping("/runs/{id}")
+    @GetMapping("/runs/{id}/coordinates")
     public List<Coordinate> getRunDetails(@PathVariable Long id) {
         var run = runRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Run not found."));
-        return run.getCooridantes();
+        return run.getCoordinates();
     }
 }

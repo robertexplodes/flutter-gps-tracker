@@ -1,11 +1,11 @@
 package com.example.server.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,6 +14,7 @@ import java.util.Objects;
 
 @Entity(name = "runs")
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Run {
@@ -21,18 +22,19 @@ public class Run {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
-    @Column(nullable = false)
     Double distance;
 
-    @Column(nullable = false)
     Integer duration;
 
     @Column(nullable = false)
     LocalDate start;
 
+    @Column(nullable = false)
+    boolean finished;
+
     @JsonIgnore
     @OneToMany(mappedBy = "run", fetch = FetchType.LAZY)
-    private List<Coordinate> cooridantes;
+    private List<Coordinate> coordinates;
 
     @Override
     public boolean equals(Object o) {

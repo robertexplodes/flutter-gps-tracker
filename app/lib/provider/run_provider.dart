@@ -32,7 +32,7 @@ class RunProvider with ChangeNotifier {
   }
 
   Future<List<LatLng>> loadCoordinates(int id) async {
-    var response = await http.get(Uri.parse('$_baseUrl/runs/$id'));
+    var response = await http.get(Uri.parse('$_baseUrl/runs/$id/coordinates'));
     var data = jsonDecode(response.body) as List<dynamic>;
 
     return data.map((e) => LatLng(e["latitude"], e["longitude"])).toList();

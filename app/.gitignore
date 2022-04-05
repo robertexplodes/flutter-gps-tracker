@@ -16,7 +16,7 @@
 .idea/
 /.dart_tool/
 /build/
-/lib/api/
+/lib/api/api_keys.dart
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.

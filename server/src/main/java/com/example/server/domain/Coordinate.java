@@ -43,4 +43,8 @@ public class Coordinate {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public double getDistance(Coordinate coordinate2) {
+        return Math.sqrt(Math.pow(this.getLatitude() - coordinate2.getLatitude(), 2) + Math.pow(this.getLongitude() - coordinate2.getLongitude(), 2));
+    }
 }
