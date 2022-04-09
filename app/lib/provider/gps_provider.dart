@@ -10,7 +10,10 @@ class GPSProvider with ChangeNotifier {
 
   StreamSubscription<LocationData>? locationSubscription;
 
+  bool running = false;
+
   void startNewRun() async {
+    running = true;
     var response = await http.post(Uri.parse('$baseUrl/runs'), body: jsonEncode({
       "start": DateTime.now().toIso8601String(),
     }), headers: {
@@ -20,10 +23,11 @@ class GPSProvider with ChangeNotifier {
     print(data);
   }
 
-  void startListening() async {
+  void startListening() {
     location.enableBackgroundMode(enable: true);
     locationSubscription = location.onLocationChanged.listen((event) {
-      http.post(Uri.parse('$baseUrl/runs/5/coordinates'),
+      print("post");
+      http.post(Uri.parse('$baseUrl/runs/1/coordinates'),
           body:
         jsonEncode({"latitude": event.latitude, "longitude": event.longitude}),
         headers: {

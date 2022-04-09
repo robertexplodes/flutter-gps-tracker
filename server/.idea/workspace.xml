@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ee83a52-c99c-4b4c-8932-64272340d8ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../app/lib/api/urls.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../app/lib/provider/gps_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/lib/pages/new_run_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/pages/new_run_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/lib/provider/run_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/provider/run_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/lib/provider/gps_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/provider/gps_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/server/domain/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/server/domain/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/server/persistence/RunRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/server/persistence/RunRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/server.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +26,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -51,7 +60,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
@@ -77,6 +86,7 @@
       <workItem from="1649141930988" duration="590000" />
       <workItem from="1649143064875" duration="371000" />
       <workItem from="1649147441218" duration="2762000" />
+      <workItem from="1649512940667" duration="1271000" />
     </task>
     <servers />
   </component>

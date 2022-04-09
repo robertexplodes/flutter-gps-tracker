@@ -26,8 +26,7 @@ class NewRunPage extends StatelessWidget {
               if (!provider.isRunning) {
                 provider.start();
                 var gpsProvider = Provider.of<GPSProvider>(context, listen: false);
-                gpsProvider.startNewRun();
-
+                if(!gpsProvider.running) gpsProvider.startNewRun();
               } else {
                 provider.stop();
               }
