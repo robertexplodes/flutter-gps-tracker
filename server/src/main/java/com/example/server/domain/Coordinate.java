@@ -9,7 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity(name="coordinates")
+@Entity(name = "coordinates")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -48,12 +48,16 @@ public class Coordinate {
 //        return Math.sqrt(Math.pow(coordinate2.getLatitude() - this.getLatitude(), 2) + Math.pow(coordinate2.getLongitude() - this.getLongitude(), 2));
 //    }
 
-    public double getDistance(Coordinate coordinate2) {
-        double theta = this.latitude - coordinate2.getLatitude();
-        double dist = Math.sin(Math.toRadians(this.latitude)) * Math.sin(Math.toRadians(coordinate2.getLatitude())) + Math.cos(Math.toRadians(this.latitude)) * Math.cos(Math.toRadians(coordinate2.getLatitude())) * Math.cos(Math.toRadians(theta));
+    public double distance(Coordinate coordinate) {
+        var lat1 = this.latitude;
+        var lat2 = coordinate.latitude;
+        var lon1 = this.longitude;
+        var lon2 = coordinate.longitude;
+        double theta = lon1 - lon2;
+        double dist = Math.sin(Math.toRadians(lat1)) * Math.sin(Math.toRadians(lat2)) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(theta));
         dist = Math.acos(dist);
         dist = Math.toDegrees(dist);
         dist = dist * 60 * 1.1515;
-            return dist * 1.609344;
+        return dist * 1.609344;
     }
 }
