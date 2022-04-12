@@ -49,7 +49,7 @@ public class Controller {
         for (int i = 1; i < coordinates.size(); i++) {
             var coordinate1 = coordinates.get(i - 1);
             var coordinate2 = coordinates.get(i);
-            distance += coordinate1.getDistance(coordinate2);
+            distance += coordinate1.distance(coordinate2);
         }
         return distance;
     }
