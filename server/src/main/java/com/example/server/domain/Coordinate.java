@@ -44,7 +44,16 @@ public class Coordinate {
         return Objects.hash(id);
     }
 
+//    public double getDistance(Coordinate coordinate2) {
+//        return Math.sqrt(Math.pow(coordinate2.getLatitude() - this.getLatitude(), 2) + Math.pow(coordinate2.getLongitude() - this.getLongitude(), 2));
+//    }
+
     public double getDistance(Coordinate coordinate2) {
-        return Math.sqrt(Math.pow(this.getLatitude() - coordinate2.getLatitude(), 2) + Math.pow(this.getLongitude() - coordinate2.getLongitude(), 2));
+        double theta = this.latitude - coordinate2.getLatitude();
+        double dist = Math.sin(Math.toRadians(this.latitude)) * Math.sin(Math.toRadians(coordinate2.getLatitude())) + Math.cos(Math.toRadians(this.latitude)) * Math.cos(Math.toRadians(coordinate2.getLatitude())) * Math.cos(Math.toRadians(theta));
+        dist = Math.acos(dist);
+        dist = Math.toDegrees(dist);
+        dist = dist * 60 * 1.1515;
+            return dist * 1.609344;
     }
 }
