@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gpstracking/provider/gps_provider.dart';
+import 'package:gpstracking/provider/run_provider.dart';
 import 'package:gpstracking/provider/stopwatch_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -23,18 +24,21 @@ class NewRunPage extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
+              var gpsProvider = Provider.of<GPSProvider>(context, listen: false);
               if (!provider.isRunning) {
                 provider.start();
-                var gpsProvider = Provider.of<GPSProvider>(context, listen: false);
-                if(!gpsProvider.running) gpsProvider.startNewRun();
+                if(!gpsProvider.running) {
+                  gpsProvider.startNewRun();
+                } else {
+                  gpsProvider.startListening();
+                }
               } else {
+                gpsProvider.stopListening();
                 provider.stop();
               }
             },
             onLongPress: () {
               if (!provider.isRunning) return;
-              provider.stop();
-              Provider.of<GPSProvider>(context, listen: false).stopListening();
               stopRunDialog(context, theme);
             },
             child: CircleAvatar(
@@ -88,6 +92,9 @@ class NewRunPage extends StatelessWidget {
               style: theme.textTheme.bodyText2,
             ),
             onPressed: () {
+              var stopwatch = Provider.of<StopwatchProvider>(context, listen: false);
+              var duration = stopwatch.reset();
+              Provider.of<GPSProvider>(context, listen: false).finishRun(duration);
               Navigator.of(context).pop();
             },
           ),

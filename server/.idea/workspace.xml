@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ee83a52-c99c-4b4c-8932-64272340d8ab" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../app/lib/domain/weather_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/domain/weather_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/lib/pages/new_run_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/pages/new_run_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/lib/provider/gps_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/provider/gps_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/lib/provider/stopwatch_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/provider/stopwatch_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/server/controller/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +38,7 @@
     <option name="myId2Visible">
       <map>
         <entry key="com.haulmont.jpb.jpaPalette" value="false" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
   </component>
@@ -86,7 +87,8 @@
       <workItem from="1649141930988" duration="590000" />
       <workItem from="1649143064875" duration="371000" />
       <workItem from="1649147441218" duration="2762000" />
-      <workItem from="1649512940667" duration="1271000" />
+      <workItem from="1649512940667" duration="1421000" />
+      <workItem from="1649751790151" duration="2958000" />
     </task>
     <servers />
   </component>

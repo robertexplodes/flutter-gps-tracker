@@ -31,7 +31,7 @@ public class Controller {
         return runRepository.save(run).getId();
     }
 
-    @PostMapping("/runs/{id}")
+    @PostMapping("/runs/finish/{id}")
     public void finishRun(@PathVariable(name = "id") Long id, @RequestBody Run newRun) {
         var run = runRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Run not found."));
         if(run.isFinished()) {
@@ -39,6 +39,7 @@ public class Controller {
         }
         run.setDuration(newRun.getDuration());
         run.setDistance(calculateDistance(run));
+        run.setFinished(true);
         runRepository.save(run);
     }
 
@@ -56,6 +57,9 @@ public class Controller {
     @PostMapping("/runs/{id}/coordinates")
     public Long postCoordinate(@PathVariable(name = "id") Long id, @RequestBody Coordinate coordinate) {
         var run = runRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Run not found."));
+        if(run.isFinished()) {
+            throw new IllegalArgumentException("Run already finished.");
+        }
         coordinate.setRun(run);
         return coordinateRepository.save(coordinate).getId();
     }

@@ -19,11 +19,12 @@ class StopwatchProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void stop() {
+  Duration stop() {
     _stopwatch.stop();
     notifier?.cancel();
     _isRunning = false;
     notifyListeners();
+    return _stopwatch.elapsed;
   }
 
   get started => _started;
@@ -36,4 +37,10 @@ class StopwatchProvider with ChangeNotifier {
   bool get isRunning => _isRunning;
 
   Duration get elapsedTime => _stopwatch.elapsed;
+
+  Duration reset() {
+    var time = stop();
+    _stopwatch.reset();
+    return time;
+  }
 }

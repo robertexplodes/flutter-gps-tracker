@@ -6,9 +6,9 @@ import 'package:location/location.dart';
 
 class WeatherService {
   // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-  String _baseURL = "https://api.openweathermap.org/data/2.5/weather";
+  final String _baseURL = "https://api.openweathermap.org/data/2.5/weather";
 
-  Location _location = Location();
+  final Location _location = Location();
 
   Future<LocationData?> getLocation() async {
     bool _serviceEnabled;

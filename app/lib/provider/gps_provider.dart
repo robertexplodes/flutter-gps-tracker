@@ -11,6 +11,7 @@ class GPSProvider with ChangeNotifier {
   StreamSubscription<LocationData>? locationSubscription;
 
   bool running = false;
+  int? currentRunId;
 
   void startNewRun() async {
     running = true;
@@ -20,14 +21,15 @@ class GPSProvider with ChangeNotifier {
       "Content-Type": "application/json"
     });
     var data = jsonDecode(response.body);
-    print(data);
+    currentRunId = data;
+    startListening();
   }
 
   void startListening() {
     location.enableBackgroundMode(enable: true);
     locationSubscription = location.onLocationChanged.listen((event) {
       print("post");
-      http.post(Uri.parse('$baseUrl/runs/1/coordinates'),
+      http.post(Uri.parse('$baseUrl/runs/$currentRunId/coordinates'),
           body:
         jsonEncode({"latitude": event.latitude, "longitude": event.longitude}),
         headers: {
@@ -39,5 +41,15 @@ class GPSProvider with ChangeNotifier {
 
   void stopListening() async {
     await locationSubscription?.cancel();
+  }
+  
+  void finishRun(Duration duration) async {
+    stopListening();
+    running = false;
+    http.post(Uri.parse('$baseUrl/runs/finish/$currentRunId'), body: jsonEncode({
+      'duration': duration.inSeconds,
+    }), headers: {
+      "Content-Type": "application/json",
+    });
   }
 }
