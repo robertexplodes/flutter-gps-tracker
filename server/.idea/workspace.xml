@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ee83a52-c99c-4b4c-8932-64272340d8ab" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../app/lib/pages/new_run_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/pages/new_run_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/lib/pages/run_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/pages/run_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/lib/provider/gps_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/provider/gps_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/lib/provider/run_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/provider/run_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/lib/widgets/run_list_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/widgets/run_list_tile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/server/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/server/domain/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/server/domain/Coordinate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/server/domain/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/server/domain/Run.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +31,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

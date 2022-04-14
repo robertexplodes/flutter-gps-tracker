@@ -6,6 +6,7 @@ import com.example.server.persistence.CoordinateRepository;
 import com.example.server.persistence.RunRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -29,6 +30,12 @@ public class Controller {
     @PostMapping("/runs")
     public Long postRun(@RequestBody Run run) {
         return runRepository.save(run).getId();
+    }
+
+    @DeleteMapping("/runs/{id}")
+    public void deleteRun(@PathVariable Long id) {
+        var run = runRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Run not found."));
+        runRepository.delete(run);
     }
 
     @PostMapping("/runs/finish/{id}")
@@ -67,6 +74,8 @@ public class Controller {
     @GetMapping("/runs/{id}/coordinates")
     public List<Coordinate> getRunDetails(@PathVariable Long id) {
         var run = runRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Run not found."));
-        return run.getCoordinates();
+        var coordinates = run.getCoordinates();
+        Collections.sort(coordinates);
+        return coordinates;
     }
 }

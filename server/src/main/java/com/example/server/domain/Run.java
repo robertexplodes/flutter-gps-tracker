@@ -33,7 +33,7 @@ public class Run {
     boolean finished;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "run", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "run", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Coordinate> coordinates;
 
     @Override

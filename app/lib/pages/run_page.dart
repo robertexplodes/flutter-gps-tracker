@@ -18,6 +18,7 @@ class RunPage extends StatefulWidget {
 
 class _RunPageState extends State<RunPage> {
   var mapController = MapController();
+  var center = LatLng(0, 0);
 
   @override
   Widget build(BuildContext context) {
@@ -39,20 +40,22 @@ class _RunPageState extends State<RunPage> {
               child: Stack(
                 children: [
                   FutureBuilder(
-                    future: Provider.of<RunProvider>(context, listen: false).loadCoordinates(widget.run.id),
-                    builder: (BuildContext context, AsyncSnapshot<List<LatLng>> snapshot) {
-                      if(snapshot.connectionState == ConnectionState.waiting) {
+                    future: Provider.of<RunProvider>(context, listen: false)
+                        .loadCoordinates(widget.run.id),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<LatLng>> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
                           child: CircularProgressIndicator(),
                         );
                       }
-                      if(snapshot.hasError) {
+                      if (snapshot.hasError) {
                         return Text("error");
                       }
-                      if(snapshot.data!.length == 0) {
+                      if (snapshot.data!.length == 0) {
                         return Text("no route");
                       }
-                      var center = snapshot.data![0];
+                      center = snapshot.data![0];
                       return FlutterMap(
                         options: MapOptions(
                           zoom: 14.0,
@@ -65,12 +68,12 @@ class _RunPageState extends State<RunPage> {
                         layers: [
                           TileLayerOptions(
                             urlTemplate:
-                            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                             subdomains: ['a', 'b', 'c'],
                           ),
                           TileLayerOptions(
                             urlTemplate:
-                            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                             subdomains: ['a', 'b', 'c'],
                           ),
                           MarkerLayerOptions(
@@ -113,9 +116,7 @@ class _RunPageState extends State<RunPage> {
                           child: IconButton(
                             alignment: Alignment.bottomRight,
                             onPressed: () {
-                              // setState(() {
-                              //   mapController.move(center, 14.0);
-                              // });
+                              mapController.move(center, 14.0);
                             },
                             icon: Icon(Icons.gps_fixed),
                           ),

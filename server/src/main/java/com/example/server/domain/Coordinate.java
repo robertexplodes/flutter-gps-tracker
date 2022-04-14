@@ -1,19 +1,22 @@
 package com.example.server.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.Objects;
 
 @Entity(name = "coordinates")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Coordinate {
+public class Coordinate implements Comparable<Coordinate> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -24,6 +27,9 @@ public class Coordinate {
 
     @Column(nullable = false)
     private Double longitude;
+
+    @Column(nullable = false)
+    private LocalDateTime timestamp;
 
     @Setter
     @JsonIgnore
@@ -59,5 +65,10 @@ public class Coordinate {
         dist = Math.toDegrees(dist);
         dist = dist * 60 * 1.1515;
         return dist * 1.609344;
+    }
+
+    @Override
+    public int compareTo(@NotNull Coordinate o) {
+        return Comparator.comparing(Coordinate::getTimestamp).compare(this, o);
     }
 }

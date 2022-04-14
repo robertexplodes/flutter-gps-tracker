@@ -15,11 +15,11 @@ class GPSProvider with ChangeNotifier {
 
   void startNewRun() async {
     running = true;
-    var response = await http.post(Uri.parse('$baseUrl/runs'), body: jsonEncode({
-      "start": DateTime.now().toIso8601String(),
-    }), headers: {
-      "Content-Type": "application/json"
-    });
+    var response = await http.post(Uri.parse('$baseUrl/runs'),
+        body: jsonEncode({
+          "start": DateTime.now().toIso8601String(),
+        }),
+        headers: {"Content-Type": "application/json"});
     var data = jsonDecode(response.body);
     currentRunId = data;
     startListening();
@@ -29,27 +29,32 @@ class GPSProvider with ChangeNotifier {
     location.enableBackgroundMode(enable: true);
     locationSubscription = location.onLocationChanged.listen((event) {
       print("post");
+      var time = DateTime.now().toIso8601String();
       http.post(Uri.parse('$baseUrl/runs/$currentRunId/coordinates'),
-          body:
-        jsonEncode({"latitude": event.latitude, "longitude": event.longitude}),
-        headers: {
-        "Content-Type": "application/json",
-        }
-      );
+          body: jsonEncode({
+            "latitude": event.latitude,
+            "longitude": event.longitude,
+            "timestamp": time,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          });
     });
   }
 
   void stopListening() async {
     await locationSubscription?.cancel();
   }
-  
+
   void finishRun(Duration duration) async {
     stopListening();
     running = false;
-    http.post(Uri.parse('$baseUrl/runs/finish/$currentRunId'), body: jsonEncode({
-      'duration': duration.inSeconds,
-    }), headers: {
-      "Content-Type": "application/json",
-    });
+    http.post(Uri.parse('$baseUrl/runs/finish/$currentRunId'),
+        body: jsonEncode({
+          'duration': duration.inSeconds,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        });
   }
 }

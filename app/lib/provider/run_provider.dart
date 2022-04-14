@@ -25,10 +25,10 @@ class RunProvider with ChangeNotifier {
       var runs = data.map((e) => Run.fromJson(e)).toList();
       _runs = runs;
       notifyListeners();
-    } catch(error) {
+    } catch (error) {
       print(error);
     }
-    return [];
+    return _runs;
   }
 
   Future<List<LatLng>> loadCoordinates(int id) async {
@@ -37,5 +37,11 @@ class RunProvider with ChangeNotifier {
 
     return data.map((e) => LatLng(e["latitude"], e["longitude"])).toList();
   }
-}
 
+  void deleteRun(int id) {
+    http
+        .delete(Uri.parse('$_baseUrl/runs/$id'))
+        .then((value) => _runs.removeWhere((element) => element.id == id))
+        .then((value) => notifyListeners());
+  }
+}

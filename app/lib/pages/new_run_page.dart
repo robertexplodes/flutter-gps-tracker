@@ -52,14 +52,6 @@ class NewRunPage extends StatelessWidget {
               ),
             ),
           ),
-          // Container(
-          //   child: provider.started
-          //       ? CircleAvatar(
-          //           child: const Icon(Icons.stop, color: Colors.red),
-          //
-          //         )
-          //       : null,
-          // ),
         ],
       ),
     );
