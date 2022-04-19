@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
+enum ThemeType {
+  light,
+  dark,
+  system
+}
+
 class Themes {
   ThemeData get darkTheme => ThemeData(
+    brightness: Brightness.dark,
+    appBarTheme: AppBarTheme(
+      backgroundColor: const Color(0xff14213D),
+    ),
     primarySwatch: const MaterialColor(0xff14213D, {
       50:Color.fromRGBO(20, 33, 61, .1),
       100:Color.fromRGBO(20, 33, 61, .2),
@@ -69,4 +79,45 @@ class Themes {
       ),
     )
   );
+
+  static ThemeData getTheme(ThemeType themeType) {
+    var themes = Themes();
+    switch (themeType) {
+      case ThemeType.light:
+        return themes.lightTheme;
+      case ThemeType.dark:
+        return themes.darkTheme;
+      case ThemeType.system:
+        var brightness = WidgetsBinding.instance!.window.platformBrightness;
+        return brightness == Brightness.dark ? themes.darkTheme : themes.lightTheme;
+      default:
+        return themes.lightTheme;
+    }
+  }
+
+  static ThemeData getThemeFromString(String theme) {
+    switch (theme) {
+      case 'light':
+        return Themes.getTheme(ThemeType.light);
+      case 'dark':
+        return Themes.getTheme(ThemeType.dark);
+      case 'system':
+        return Themes.getTheme(ThemeType.system);
+      default:
+        return Themes.getTheme(ThemeType.light);
+    }
+  }
+
+  static ThemeType getThemeTypeFromString(String theme) {
+    switch (theme) {
+      case 'light':
+        return ThemeType.light;
+      case 'dark':
+        return ThemeType.dark;
+      case 'system':
+        return ThemeType.system;
+      default:
+        return ThemeType.light;
+    }
+  }
 }

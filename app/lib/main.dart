@@ -15,7 +15,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ThemeProvider(Themes().darkTheme),
+          create: (_) => ThemeProvider(ThemeType.dark),
         ),
         ChangeNotifierProvider(
           create: (_) => RunProvider(),
