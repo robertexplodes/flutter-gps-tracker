@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:gpstracking/domain/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider with ChangeNotifier {
 
-  ThemeData _themeData;
-  ThemeData get themeData => _themeData;
+  ThemeData get themeData => Themes.getTheme(currentTheme);
+  ThemeType currentTheme;
 
-  ThemeProvider(this._themeData);
+  ThemeProvider(this.currentTheme) {
+    loadSavedTheme();
+  }
 
-  void changeTheme(ThemeData themeData) {
-    _themeData = themeData;
+
+  void loadSavedTheme() async {
+    var prefs = await SharedPreferences.getInstance();
+    var theme = prefs.getString("theme");
+    theme ??= "system";
+    currentTheme = Themes.getThemeTypeFromString(theme);
+  }
+
+  void setTheme(ThemeType themeType) {
+    currentTheme = themeType;
     notifyListeners();
   }
 
-  void switchTheme() {
-    if (_themeData == Themes().darkTheme) {
-      changeTheme(Themes().lightTheme);
-    } else {
-      changeTheme(Themes().darkTheme);
-    }
+  void writeTheme(ThemeType theme) async {
+    var prefs = await SharedPreferences.getInstance();
+    prefs.setString("theme", theme.name);
   }
 }
