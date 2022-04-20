@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ee83a52-c99c-4b4c-8932-64272340d8ab" name="Changes" comment="distance calc works">
-      <change beforePath="$PROJECT_DIR$/../app/lib/pages/new_run_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/pages/new_run_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/lib/pages/settings/motivation_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/pages/settings/motivation_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4ee83a52-c99c-4b4c-8932-64272340d8ab" name="Changes" comment="distance calc works" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,7 +67,7 @@
       <workItem from="1649141930988" duration="590000" />
       <workItem from="1649143064875" duration="371000" />
       <workItem from="1649147441218" duration="2762000" />
-      <workItem from="1650438876708" duration="1883000" />
+      <workItem from="1650438876708" duration="2081000" />
     </task>
     <servers />
   </component>
