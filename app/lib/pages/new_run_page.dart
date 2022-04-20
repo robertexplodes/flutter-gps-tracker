@@ -43,6 +43,7 @@ class NewRunPage extends StatelessWidget {
             },
             child: CircleAvatar(
               radius: 40,
+              backgroundColor: Theme.of(context).primaryColor,
               child: Icon(
                 provider.isRunning ? Icons.stop : Icons.play_arrow,
                 color: provider.isRunning

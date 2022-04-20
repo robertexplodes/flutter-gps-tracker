@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ee83a52-c99c-4b4c-8932-64272340d8ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../app/lib/domain/quote.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../app/lib/pages/settings/motivation_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/lib/pages/settings_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/pages/settings_page.dart" afterDir="false" />
+    <list default="true" id="4ee83a52-c99c-4b4c-8932-64272340d8ab" name="Changes" comment="distance calc works">
+      <change beforePath="$PROJECT_DIR$/../app/lib/pages/new_run_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/pages/new_run_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/lib/pages/settings/motivation_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../app/lib/pages/settings/motivation_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,22 +26,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="JpbToolWindowState">
-    <option name="myId2FirstActivated">
-      <map>
-        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
-        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
-      </map>
-    </option>
-    <option name="myId2Visible">
-      <map>
-        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
-        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
-      </map>
-    </option>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -52,18 +35,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;cf1e8c14e54505f60aa10ceb8d5d8ab3&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
   <component name="RunManager">
     <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="server" />
@@ -87,12 +71,7 @@
       <workItem from="1649141930988" duration="590000" />
       <workItem from="1649143064875" duration="371000" />
       <workItem from="1649147441218" duration="2762000" />
-      <workItem from="1649957238031" duration="539000" />
-      <workItem from="1650124360797" duration="12000" />
-      <workItem from="1650124395931" duration="250000" />
-      <workItem from="1650190730926" duration="12000" />
-      <workItem from="1650216087889" duration="1141000" />
-      <workItem from="1650363170415" duration="1547000" />
+      <workItem from="1650438876708" duration="1883000" />
     </task>
     <servers />
   </component>
